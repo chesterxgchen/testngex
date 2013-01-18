@@ -16,7 +16,7 @@ This is useful when one is trying to debug a problem.
 
 
 Without the ConsoleReporter, the sample test output will be like the following:
-
+<pre><code>
 run-test:
    [testng] [TestNG] Running:
    [testng]   /disk2/projects/testngex/src/test/testng.xml
@@ -92,7 +92,7 @@ Here is the output of the same example with the ConsoleReporter:
      [testng]
      [testng] The tests failed.
 
-
+</code></pre>
 Setup
     1) Put the testngex-<version>.jar into your classpath or
        put the com.xiaoguangchen.testngex.ConsoleReporter.class in your classpath.
