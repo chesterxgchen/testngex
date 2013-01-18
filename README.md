@@ -121,9 +121,9 @@ Sample Project
 
      To see how this is used in this project. You can checkout this project.
       make sure you have the java and Ant setup. Go to the project home, type
-
+<pre><code>
       ant run-test
-
+</code></pre>
       which will download the ivy, and then retrieve the testng, build the project
       and then run the sample testng tests.
 
