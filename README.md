@@ -1,15 +1,14 @@
-<h3>
+<h2>
 TestNGEx -- TestNG extension
-</h3>
+</h2>
 
 Chester Chen
 
-<h2>
+<h3>
 Introduction
-</h2>
+</h3>
 
 This project is intended to a set of extensions to the existing testNG framework.
-
 
 The extension includes Listeners etc.Currently, I only have one listener: ConsoleReporter.
 
@@ -99,9 +98,9 @@ Here is the output of the same example with the ConsoleReporter:
      [testng] The tests failed.
 
 </code></pre>
-<bold>
+<h3>
 Setup
-</bold>
+</h3>
 
     1) Put the testngex-<version>.jar into your classpath or
        put the com.xiaoguangchen.testngex.ConsoleReporter.class in your classpath.
@@ -116,9 +115,9 @@ Setup
 
      that's it.
 
-<bold>
+<h3>
 Sample Project
-</bold>
+</h3>
 
      To see how this is used in this project. You can checkout this project.
       make sure you have the java and Ant setup. Go to the project home, type
