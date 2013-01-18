@@ -1,7 +1,12 @@
+<bold>
 TestNGEx -- TestNG extension
+</bold>
 
 Chester Chen
 
+<bold>
+Introduction
+</bold>
 
 This project is intended to a set of extensions to the existing testNG framework.
 
@@ -32,12 +37,13 @@ run-test:
    [testng] ===============================================
    [testng]
    [testng] The tests failed.
-
+ </code></pre>
 
 We know 4 tests were run and 1 failed, but we don't know which one failed and why failed.
 To figure out the result, we need to run the report and open up the output files to example.
 
 Here is the output of the same example with the ConsoleReporter:
+ <pre><code>
 
   Running:
      [testng]   /disk2/projects/testngex/src/test/testng.xml
@@ -93,7 +99,10 @@ Here is the output of the same example with the ConsoleReporter:
      [testng] The tests failed.
 
 </code></pre>
+<bold>
 Setup
+</bold>
+
     1) Put the testngex-<version>.jar into your classpath or
        put the com.xiaoguangchen.testngex.ConsoleReporter.class in your classpath.
 
@@ -107,8 +116,9 @@ Setup
 
      that's it.
 
-
+<bold>
 Sample Project
+</bold>
      To see how this is used in this project. You can checkout this project.
       make sure you have the java and Ant setup. Go to the project home, type
 
