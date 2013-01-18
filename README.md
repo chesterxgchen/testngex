@@ -1,12 +1,12 @@
-<bold>
+<h3>
 TestNGEx -- TestNG extension
-</bold>
+</h3>
 
 Chester Chen
 
-<bold>
+<h2>
 Introduction
-</bold>
+</h2>
 
 This project is intended to a set of extensions to the existing testNG framework.
 
@@ -119,6 +119,7 @@ Setup
 <bold>
 Sample Project
 </bold>
+
      To see how this is used in this project. You can checkout this project.
       make sure you have the java and Ant setup. Go to the project home, type
 
