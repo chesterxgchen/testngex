@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+
+<suite name="testng-ext" >
+
+  <test name="test" >
+
+   <groups>
+      <run>
+      </run>
+    </groups>
+
+
+
+      <classes>
+          <class name="com.xiaoguangchen.testngex.Sample" />
+
+      </classes>
+
+  </test>
+
+</suite>

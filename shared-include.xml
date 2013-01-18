@@ -1,0 +1,95 @@
+<project name="shared-include" default="help" basedir=".">
+
+   <!-- ==============================================================
+     shared build file
+
+     Xiaoguang (Chester) Chen
+    ============================================================== -->
+
+    <import file="shared-init.xml"/>
+
+    <!--- =======================================================
+            common build functions
+      ==========================================================-->
+       <!-- init -->
+       <target name="shared-init" description="initialization">
+
+           <mkdir dir="${test.output}"/>
+           <mkdir dir="${classes.dir}"/>
+           <mkdir dir="${dist.dir}"/>
+           <mkdir dir="${build.conf.dir}"/>
+           <mkdir dir="${lib.dir}"/>
+
+          <!-- shared.commons.libraries -->
+           <fileset id="shared.libraries" dir="${lib.dir}">
+             <patternset>
+               <include name="*.jar"/>
+             </patternset>
+           </fileset>
+
+          <!-- project.classpath -->
+          <path id="project.classpath">
+              <fileset refid="shared.libraries"/>
+              <pathelement location="${classes.dir}"/>
+              <pathelement location="${src.dir}"/>
+
+          </path>
+       </target>
+
+
+       <!-- clean -->
+       <target name="clean" description="cleanup">
+
+           <echo> cleaning </echo>
+           <delete failonerror="false" quiet = "true" includeemptydirs="true">
+              <fileset dir="${dist.dir}" includes="**/*" />
+              <fileset dir="${build.dir}" includes="**/*" />
+              <fileset dir="." includes="**/*.bak"/>
+           </delete>
+       </target>
+
+
+
+       <!--  rebuild: note init must be defined to make the code work -->
+       <target name="rebuild" depends="clean,build" description= "rebuild"/>
+
+       <!--  build-->
+       <target name="build" depends="jar" description ="build"/>
+
+
+      <target name="compile" depends="shared-init" description ="build">
+         <mkdir dir="${basedir}/${classes.dir}"/>
+         <mkdir dir="${basedir}/${dist.dir}"/>
+
+          <javac destdir="${classes.dir}"  debug="${debug}"   includeantruntime ="false"
+                 classpathref="compile.classpath" >
+                 <src path="${src.java.dir}" />
+                 <src path="${test.java.dir}" />
+                 <compilerarg line="-Xlint:unchecked"/>
+           </javac>
+      </target>
+
+
+       <!-- Copy metadata to build classpath -->
+       <target name="copymetafiles">
+           <mkdir dir="${build.dir}"/>
+           <copy todir="${build.dir}/conf">
+               <fileset dir="${src.conf.dir}">
+                   <patternset refid="meta.files"/>
+               </fileset>
+           </copy>
+       </target>
+       <!--jar: note target init must be defined to make the code work -->
+      <target name="jar" depends="compile, copymetafiles" description ="make jar distribution">
+       <jar destfile="${dist.dir}/${jar.name}" duplicate="fail">
+
+           <fileset dir="${build.conf.dir}" excludes="**/.svn" >
+               <include name="**/*"/>
+            </fileset>
+            <fileset dir="${classes.dir}" excludes="**/.svn" />
+       </jar>
+      </target>
+
+    
+
+</project>

@@ -1,0 +1,59 @@
+<project name="testngex"  xmlns:ivy="antlib:org.apache.ivy.ant"  default="build" basedir=".">
+
+   <!-- ==============================================================
+     Commons build file.
+
+     Xiaoguang (Chester) Chen
+    ============================================================== -->
+    <!-- defines project.home -->
+
+
+   <property environment="env"/>
+   <property name="project.home" value="."/>
+   <import file="shared-include.xml"/>
+   <import file="ivy-install.xml"/>
+
+   <property name="version" value="0.1.0"/>
+   <property name="jar.name" value="${ant.project.name}-${version}.jar"/>
+
+   <echo> PROJECT HOME = ${project.home}</echo>
+
+
+   <!-- compile.classpath -->
+   <path id="compile.classpath">
+       <path refid="project.classpath"/>
+   </path>
+
+    <path id="test.classpath">
+        <path refid="compile.classpath"/>
+        <path path= "${build.dir}/classes"/>
+    </path>
+
+    <!-- ==================================================================== -->
+    <!-- resolve                                                            -->
+    <!-- ==================================================================== -->
+    <target name="resolve" description="--> retrieve dependencies with ivy">
+        <property name="ivy.lib.dir" value="lib"/>
+        <ivy:retrieve />
+    </target>
+
+
+    <!-- ==================================================================== -->
+    <!-- build                                                             -->
+    <!-- ==================================================================== -->
+    <target name="build" depends="init-ivy, resolve, jar" description ="build"/>
+
+    <!-- ==================================================================== -->
+    <!-- Run-test                                                             -->
+    <!-- ==================================================================== -->
+    <target name="run-test" description="run test using testng task" depends="build, copymetafiles">
+        <taskdef classpathref="project.classpath" name="testng" classname="org.testng.TestNGAntTask"/>
+
+        <testng classpathref="test.classpath"
+                outputdir="${test.output}"
+                reporter="com.xiaoguangchen.testngex.ConsoleReporter">
+            <xmlfileset dir="${basedir}" includes="${test.dir}/testng.xml"/>
+        </testng>
+    </target>
+
+</project>
