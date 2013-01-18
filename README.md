@@ -131,8 +131,11 @@ Sample Project
 
 
 
+<h3>
+License
+</h3>
 
-
+testngex is licensed under the <a href="http://www.wtfpl.net/">wtfpl</a>
 
 
 
